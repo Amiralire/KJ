@@ -7,9 +7,9 @@ nc='\033[0m' # بدون رنگ
 # نمایش نام شما به رنگ سبز
 echo -e "${green}@KJx1111${nc}"
 
-# رنج‌های آی‌پی تعریف شده
+# رنج‌های آی‌پی تعریف شده (سه بخش اول آی‌پی)
 ranges=(
-    "37.72"
+    "37.72.0"
     "37.97.124"
     "37.98.200"
     "45.80.85"
@@ -24,17 +24,27 @@ generate_random_octet() {
   echo $(shuf -i 1-255 -n 1)
 }
 
-# چاپ آی‌پی‌های IPv4:1
+# چاپ آی‌پی‌های IPv4:1 به فرمت کامل
 echo "IPv4:1:"
 for ((i=0; i<$ip_count; i++)); do
-  random_octet=$(generate_random_octet)
-  echo "${ranges[0]}.$random_octet"
+  random_octet1=$(generate_random_octet)
+  random_octet2=$(generate_random_octet)
+  random_octet3=$(generate_random_octet)
+  random_octet4=$(generate_random_octet)
+  
+  # آی‌پی کامل به صورت 4 بخش تصادفی
+  echo "$random_octet1.$random_octet2.$random_octet3.$random_octet4"
 done
 
-# چاپ آی‌پی‌های IPv4:2
+# چاپ آی‌پی‌های IPv4:2 به فرمت کامل
 echo ""
 echo "IPv4:2:"
 for ((i=0; i<$ip_count; i++)); do
-  random_octet=$(generate_random_octet)
-  echo "${ranges[1]}.$random_octet"
+  random_octet1=$(generate_random_octet)
+  random_octet2=$(generate_random_octet)
+  random_octet3=$(generate_random_octet)
+  random_octet4=$(generate_random_octet)
+  
+  # آی‌پی کامل به صورت 4 بخش تصادفی
+  echo "$random_octet1.$random_octet2.$random_octet3.$random_octet4"
 done
