@@ -9,25 +9,32 @@ echo -e "${green}@KJx1111${nc}"
 
 # رنج‌های آی‌پی تعریف شده
 ranges=(
-    "37.72.0."
-    "37.97.124."
-    "37.98.200."
-    "45.80.85."
-    "85.217.132."
+    "37.72"
+    "37.97.124"
+    "37.98.200"
+    "45.80.85"
+    "85.217.132"
 )
 
 # تعداد آی‌پی‌ها برای هر دسته
 ip_count=10
 
+# تابع برای تولید عدد تصادفی بین 1 تا 255
+generate_random_octet() {
+  echo $(shuf -i 1-255 -n 1)
+}
+
 # چاپ آی‌پی‌های IPv4:1
 echo "IPv4:1:"
 for ((i=0; i<$ip_count; i++)); do
-  echo "${ranges[0]}$((i+1))"
+  random_octet=$(generate_random_octet)
+  echo "${ranges[0]}.$random_octet"
 done
 
 # چاپ آی‌پی‌های IPv4:2
 echo ""
 echo "IPv4:2:"
 for ((i=0; i<$ip_count; i++)); do
-  echo "${ranges[1]}$((i+1))"
+  random_octet=$(generate_random_octet)
+  echo "${ranges[1]}.$random_octet"
 done
